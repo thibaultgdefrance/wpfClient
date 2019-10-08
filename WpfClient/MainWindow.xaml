@@ -1,0 +1,42 @@
+﻿<Window x:Class="WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtbComment" HorizontalAlignment="Left" Height="50" Margin="10,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="652"/>
+        <TextBox x:Name="Ip" HorizontalAlignment="Left" Height="29" Margin="300,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+        <TextBox x:Name="Port" HorizontalAlignment="Left" Height="29" Margin="565,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.542,1.654"/>
+        <Button x:Name="btnsend" Content="Envoyer" HorizontalAlignment="Left" Height="50" Margin="678,291,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click" Background="#FF78D4FF">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBox x:Name="Pseudo" HorizontalAlignment="Left" Height="29" Margin="10,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224"/>
+
+        <Label Content="pseudo :" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.4,0.781" />
+        <Label Content="ip:" HorizontalAlignment="Left" Margin="300,342,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label Content="port:" HorizontalAlignment="Left" Margin="565,341,0,0" VerticalAlignment="Top" Width="97"/>
+        <Button x:Name="btnConnect" Content="Connexion" HorizontalAlignment="Left" Height="29" Margin="678,368,0,0" VerticalAlignment="Top" Width="91" Background="#FFA9FF9C" Click="Button_Click_1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnDeconnexion" Content="Deconnexion" HorizontalAlignment="Left" Height="21" Margin="678,10,0,0" VerticalAlignment="Top" Width="91" Background="#FFFF7878" Click="Button_Click_2">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <RichTextBox x:Name="affichage" HorizontalAlignment="Left" Height="260" VerticalAlignment="Top" Width="652" Margin="10,10,0,0">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+    </Grid>
+</Window>
