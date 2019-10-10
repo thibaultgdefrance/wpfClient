@@ -37,6 +37,7 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
+        <ListBox x:Name="listeLangue" HorizontalAlignment="Left" Height="216" Margin="678,54,0,0" VerticalAlignment="Top" Width="91"/>
 
     </Grid>
 </Window>

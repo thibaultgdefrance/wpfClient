@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,15 +29,22 @@ namespace WpfClient
         public delegate void dEcrit(string texte);
         public delegate void dEnvoi(string texte);
         FlowDocument flowDocument = new FlowDocument();
-
+        private SpeechSynthesizer parole = new SpeechSynthesizer();
         public MainWindow()
         {
             InitializeComponent();
             //Pseudo.Text = Environment.UserName.ToUpper();
-            Pseudo.Text = "Marlene";
-
+            Pseudo.Text = "Marlene Shiappa";
+            List<string> langues = new List<string>();
+            foreach (var item in parole.GetInstalledVoices())
+            {
+                VoiceInfo info = item.VoiceInfo;
+                Console.Write(info.Name);
+                langues.Add(info.Name);
+            }
+            listeLangue.ItemsSource = langues;
         }
-
+        
         
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -100,6 +108,8 @@ namespace WpfClient
                 string Message = System.Text.Encoding.UTF8.GetString(Octets);
                 Message = Message.Substring(0, Recu);
                 EcritureMessage(Message);
+                parole.SelectVoice("Microsoft Zira Desktop");
+                parole.SpeakAsync(Message);
             }
         }
         public void Ecrit(string texte)
