@@ -12,4 +12,3 @@ C:\Users\afpa\source\repos\WpfClient\WpfClient\obj\Debug\WpfClient.csproj.Genera
 C:\Users\afpa\source\repos\WpfClient\WpfClient\obj\Debug\WpfClient.csproj.CoreCompileInputs.cache
 C:\Users\afpa\source\repos\WpfClient\WpfClient\obj\Debug\WpfClient.exe
 C:\Users\afpa\source\repos\WpfClient\WpfClient\obj\Debug\WpfClient.pdb
-C:\Users\afpa\source\repos\WpfClient\WpfClient\obj\Debug\WpfClient.csprojAssemblyReference.cache
