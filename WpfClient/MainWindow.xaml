@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfClient"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="Anglais">
         <TextBox x:Name="txtbComment" HorizontalAlignment="Left" Height="50" Margin="10,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="652"/>
         <TextBox x:Name="Ip" HorizontalAlignment="Left" Height="29" Margin="300,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
         <TextBox x:Name="Port" HorizontalAlignment="Left" Height="29" Margin="565,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.542,1.654"/>
@@ -30,14 +30,18 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <RichTextBox x:Name="affichage" HorizontalAlignment="Left" Height="260" VerticalAlignment="Top" Width="652" Margin="10,10,0,0">
+        <RichTextBox x:Name="affichage" HorizontalAlignment="Left" Height="236" VerticalAlignment="Top" Width="652" Margin="10,10,0,0">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="RichTextBox"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <ListBox x:Name="listeLangue" HorizontalAlignment="Left" Height="216" Margin="678,54,0,0" VerticalAlignment="Top" Width="91"/>
+        <ListBox x:Name="listeLangue" HorizontalAlignment="Left" Height="19" Margin="10,251,0,0" VerticalAlignment="Top" Width="474"/>
+        <Button x:Name="Francais" Content="Français" HorizontalAlignment="Left" Margin="694,49,0,0" VerticalAlignment="Top" Width="75" Click="Francais_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="0" Margin="694,111,0,0" VerticalAlignment="Top" Width="5"/>
+        <Button x:Name="Anglais1" Content="Anglais" HorizontalAlignment="Left" Margin="694,86,0,0" VerticalAlignment="Top" Width="75" Click="Anglais1_Click"/>
+        <Button x:Name="ImagePicker" Content="Choisir une image" HorizontalAlignment="Left" Margin="510,251,0,0" VerticalAlignment="Top" Width="125" Click="ImagePicker_Click"/>
 
     </Grid>
 </Window>

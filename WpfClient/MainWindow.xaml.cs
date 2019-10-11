@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -16,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace WpfClient
 {
@@ -42,7 +45,8 @@ namespace WpfClient
                 Console.Write(info.Name);
                 langues.Add(info.Name);
             }
-            listeLangue.ItemsSource = langues;
+            
+          
         }
         
         
@@ -54,7 +58,7 @@ namespace WpfClient
             string[] numCpte = Ip.Text.Split(separator);
             if (numCpte.Length !=4)
             {
-                //EcritureMessage("Adresse Ip non valide");
+                EcritureMessage("Adresse Ip non valide");
                 return;
             }
             try
@@ -66,7 +70,7 @@ namespace WpfClient
             }
             catch (Exception ex)
             {
-                //EcritureMessage(ex.Message);
+                EcritureMessage(ex.Message);
                 
             }
             TraitementConnexion();
@@ -118,7 +122,7 @@ namespace WpfClient
                 string Message = System.Text.Encoding.UTF8.GetString(Octets);
                 Message = Message.Substring(0, Recu);
                 EcritureMessage(Message);
-                parole.SelectVoice("Microsoft Hortense Desktop");
+                
                 parole.SpeakAsync(Message);
             }
         }
@@ -129,7 +133,7 @@ namespace WpfClient
             string[] result = texte.Split(':');
             if (result.Count() > 1)
             {
-                BitmapImage bitmapImage = new BitmapImage(new Uri("https://fr.seaicons.com/wp-content/uploads/2015/06/Comment-icon.png"));
+                /*BitmapImage bitmapImage = new BitmapImage(new Uri("https://fr.seaicons.com/wp-content/uploads/2015/06/Comment-icon.png"));
 
                 Bold commentaire = new Bold(new Run(result[1]));
                 Run identite = new Run(" " + result[0] + ": ");
@@ -140,8 +144,15 @@ namespace WpfClient
                 paragraph.Inlines.Add(smiley);
 
                 paragraph.Inlines.Add(identite);
-                paragraph.Inlines.Add(commentaire);
-
+                paragraph.Inlines.Add(commentaire);*/
+                
+                BitmapImage bitmapImage2 = new BitmapImage();
+                bitmapImage2.StreamSource = texte;
+                Image imageEnvoi = new Image();
+                imageEnvoi.Source = bitmapImage2;
+                imageEnvoi.Height = 100;
+                imageEnvoi.Width = 100;
+                paragraph.Inlines.Add(imageEnvoi);
             }
             else
             {
@@ -212,6 +223,7 @@ namespace WpfClient
                 btnConnect.IsEnabled = true;
                 Ip.IsEnabled = true;
                 Port.IsEnabled = true;
+
             }
             catch (Exception)
             {
@@ -250,6 +262,35 @@ namespace WpfClient
                 Envoi = MonSocketClient.Send(Octets);
             }
             txtbComment.Text = "";
+        }
+
+        private void Francais_Click(object sender, RoutedEventArgs e)
+        {
+            parole.SelectVoice("Microsoft Hortense Desktop");
+        }
+
+        private void Anglais1_Click(object sender, RoutedEventArgs e)
+        {
+            parole.SelectVoice("Microsoft Zira Desktop");
+        }
+
+        private void ImagePicker_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            var result = fileDialog.ShowDialog();
+            var filePath = fileDialog.FileName;
+            Stream stream = fileDialog.OpenFile();
+            using (BinaryReader br = new BinaryReader(stream))
+            {
+                Byte[] truc= br.ReadBytes((int)stream.Length);
+                string a = "";
+                foreach (var item in truc)
+                {
+                    a += item;
+                }
+                txtbComment.Text = a;
+            }
+                   
         }
     }
 }
